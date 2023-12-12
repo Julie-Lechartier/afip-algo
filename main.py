@@ -15,4 +15,7 @@ print(supprimer_entete(data))
 
 
 #affichage de trois lettres
-print(affichier_nom_trois_lettres(supprimer_entete))
+#print(affichier_nom_trois_lettres(data))
+
+#enregistrement des données dans un autres fichiers
+print(enregistrer_fichier(data))
