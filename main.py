@@ -3,19 +3,20 @@ from functions import *
 # Nom de fichier à charger
 fileName = "FIFA_World_cup/FIFA-2022.txt";
 
-# Charge un fichier en lecture
-data = open(fileName, "r+")
-
 # Charge les données à partir d'un fichier
-print(Charger_donner(data))
-
+data = Charger_donner(fileName);
+print(data)
 
 #suppression de l'en-tête
-print(supprimer_entete(data))
+print(supprimer_entete(fileName))
 
+#nouveau fichier copié
+fichier2 = "text.txt"
+enregistrer_fichier(data, "text.txt")
 
 #affichage de trois lettres
-#print(affichier_nom_trois_lettres(data))
+affichier_nom_trois_lettres(data, fichier2)
 
-#enregistrement des données dans un autres fichiers
-print(enregistrer_fichier(data))
+
+#melanger les lignes
+print(melanger_lignes(fichier2))

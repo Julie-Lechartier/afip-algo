@@ -1,61 +1,47 @@
 import os
+import random
 
 fileName = "FIFA_World_cup/FIFA-2022.txt";
 
 #1. Fonction `charger_donnees(fichier: str) -> list`
-def Charger_donner (data):
-    data = open(fileName, "r+")
+def Charger_donner (fileName):
+    with open(fileName, "r+") as file:
+        return file.readlines()
    
 
 #2. Fonction `supprimer_entete(fichier: str) -> list`
-def supprimer_entete(data):
-    lignes = data.readlines()
-    data.seek(0);
-    data.truncate();
-    data.writelines(lignes[1:]);
-#comment afficher le résultat ?
+def supprimer_entete(fileName):
+    with open(fileName, 'r+') as donne:
+        lignes = donne.readlines()
+        donne.seek(0);
+        donne.truncate();
+        donne.writelines(lignes[1:]);
+
+#4. Fonction `afficher_nom_trois_lettres(str) -> str`
+def affichier_nom_trois_lettres(data, fichier2):
+    with open(fichier2, 'w') as resultat:
+        for ligne in data:
+            colonnes = ligne.split(',')
+            if len(colonnes) >=2:
+                team = colonnes[1][:3]
+                resultat.write(team +'\n')
+            else:
+                print("Impossible de faire le changement")
 
 
-#3. Fonction `afficher_nom_trois_lettres(str) -> str`
-def affichier_nom_trois_lettres(data):
-    lignecol = data.readlines();
-    for ligne in lignecol:
-        sep = ","
-        acc = 0
-        sequence = ''#message erreur no values
-        if ligne == sep:
-            acc = acc + 1
-        if acc > 0 and acc <= 1 and ligne != sep :
-            sequence += ligne;
-    team = sequence[0]+sequence[1]+sequence[2]
-    print(team)
-
-
-#    print(ligne)     
-#file.close()
-    
-#char name[50]:
-#    name[0] = "F" création d'un index
-#fonction char[50] on déclare le nombre de place à réserver
-#[:2].upper() placement et masjucule
-# couper = slice(3)
-#split
-#with open ("FIFA_World_cup/FIFA-2022.txt", "r+") as fichier:
-#    print(fichier.split(','))
-
-#fichier = pd.read_csv("FIFA_World_cup/FIFA-2022.txt", sep=" ", header=None)
-#print(fichier)
-
-
-
-
-# 4. Fonction `enregistrer_fichier("donnees, fichier.ext") -> fichier.ext`
-def enregistrer_fichier(data):
-    with open(fileName, "r+") as fichier_source:
-        donnee = fichier_source.read()
-    fichier_source.close
-    text = open("text.txt", 'a')
-    with open(text, 'w') as fichier_secondaire:
-        fichier_secondaire.write(donnee)
-    fichier_secondaire.close
+#5. Fonction `enregistrer_fichier("donnees, fichier.ext") -> fichier.ext`
+def enregistrer_fichier(data, fichier2):
+    with open(fichier2, 'w') as fichier_secondaire:
+        fichier_secondaire.writelines(data)
     print("Texte FIFA mis a jour.")
+    
+
+#6. mélanger les lignes d'un fichier
+def melanger_lignes(fichier2):
+    with open(fichier2, 'r') as file:
+        lines = file.readlines()
+        random.shuffle(lines)
+    with open(fichier2, 'w') as file:
+        file.writelines(lines)
+
+
