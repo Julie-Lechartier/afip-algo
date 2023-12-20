@@ -8,7 +8,7 @@ def Charger_donner (fileName):
     with open(fileName, "r+") as file:
         return file.readlines()
     
-#3. Fonction `supprimer_entete(fichier: str) -> list`
+#2. Fonction `supprimer_entete(fichier: str) -> list`
 def supprimer_entete(fileName):
     with open(fileName, 'r+') as donne:
         lignes = donne.readlines()
@@ -18,14 +18,14 @@ def supprimer_entete(fileName):
         
 
 
-#2. Fonction `enregistrer_fichier("donnees, fichier.ext") -> fichier.ext`
+#3. Fonction `enregistrer_fichier("donnees, fichier.ext") -> fichier.ext`
 def enregistrer_fichier(data, fichier2):
     with open(fichier2, 'w') as fichier_secondaire:
         fichier_secondaire.writelines(data)
     print("Texte FIFA mis a jour.")
 
         
-#3. fonction transformer le fichier2 sous forme de colonne
+#4. fonction transformer le fichier2 sous forme de colonne
 def transformation_colonne(data, fichier2):
     with open(fichier2, 'w') as file:
         for ligne in data:
@@ -33,7 +33,7 @@ def transformation_colonne(data, fichier2):
             file.write(','.join(colonnes) + '\n')   
 
 
-#4. Fonction `afficher_nom_trois_lettres(str) -> str`
+#5. Fonction `afficher_nom_trois_lettres(str) -> str`
 def affichier_nom_trois_lettres(data, fichier2):
     with open(fichier2, 'w') as resultat:
         for ligne in data:
